@@ -23,7 +23,8 @@
 #ifndef NDN_TOOLS_PING_SERVER_PING_SERVER_HPP
 #define NDN_TOOLS_PING_SERVER_PING_SERVER_HPP
 
-#include "core/common.hpp"
+#include "ns3/ndnSIM/ndn-tools/core/common.hpp"
+#include "ns3/ndnSIM-module.h"
 
 namespace ndn {
 namespace ping {
@@ -94,7 +95,7 @@ private:
 private:
   const Options& m_options;
   Name m_name;
-  KeyChain m_keyChain;
+  KeyChain& m_keyChain;
   int m_nPings;
   Face& m_face;
   Block m_payload;

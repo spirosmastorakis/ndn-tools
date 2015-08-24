@@ -56,6 +56,8 @@ Ping::start()
 void
 Ping::performPing()
 {
+  std::cout << m_options.nPings << std::endl;
+  std::cout << m_nSent << std::endl;
   BOOST_ASSERT((m_options.nPings < 0) || (m_nSent < m_options.nPings));
 
   Name pingPacketName = makePingName(m_nextSeq);
@@ -85,14 +87,18 @@ Ping::onData(const Interest& interest, Data& data, uint64_t seq, const time::ste
 {
   time::nanoseconds rtt = time::steady_clock::now() - sendTime;
 
+  std::cout << "Received data " << std::endl;
   afterResponse(seq, rtt);
+  std::cout << "Before finishing completely " << std::endl;
 
   finish();
+  std::cout << "Finished receiving data " << std::endl;
 }
 
 void
 Ping::onTimeout(const Interest& interest, uint64_t seq)
 {
+  std::cout << "Timeout " << std::endl;
   afterTimeout(seq);
 
   finish();

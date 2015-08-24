@@ -31,6 +31,7 @@ PingServer::PingServer(Face& face, const Options& options)
   , m_name(options.prefix)
   , m_nPings(0)
   , m_face(face)
+  , m_keyChain(ns3::ndn::StackHelper::getKeyChain())
 {
   shared_ptr<Buffer> b = make_shared<Buffer>();
   b->assign(m_options.payloadSize, 'a');
@@ -65,6 +66,7 @@ PingServer::getNPings() const
 void
 PingServer::onInterest(const Interest& interest)
 {
+  std::cout << "Received interest " << std::endl;
   Name interestName = interest.getName();
 
   afterReceive(interestName);
