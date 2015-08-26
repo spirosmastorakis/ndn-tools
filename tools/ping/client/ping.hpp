@@ -23,7 +23,7 @@
 #ifndef NDN_TOOLS_PING_CLIENT_PING_HPP
 #define NDN_TOOLS_PING_CLIENT_PING_HPP
 
-#include "ns3/ndnSIM/ndn-tools/core/common.hpp"
+#include "core/common.hpp"
 
 namespace ndn {
 namespace ping {

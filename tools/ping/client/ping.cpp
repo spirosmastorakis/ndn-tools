@@ -107,11 +107,15 @@ Ping::onTimeout(const Interest& interest, uint64_t seq)
 void
 Ping::finish()
 {
+  std::cout << "Finish " << std::endl;
   if (--m_nOutstanding >= 0) {
+    std::cout << "Return " << std::endl;
     return;
   }
 
+  std::cout << "Shutting down face " << std::endl;
   m_face.shutdown();
+  std::cout << "After finish " << std::endl;
   afterFinish();
   // m_face.getIoService().stop();
 }
@@ -119,6 +123,7 @@ Ping::finish()
 Name
 Ping::makePingName(uint64_t seq) const
 {
+  std::cout << "Make ping name " << std::endl;
   Name name(m_options.prefix);
   name.append("ping");
   if (!m_options.clientIdentifier.empty()) {

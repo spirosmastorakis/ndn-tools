@@ -22,7 +22,7 @@
 #ifndef NDN_TOOLS_PING_SERVER_TRACER_HPP
 #define NDN_TOOLS_PING_SERVER_TRACER_HPP
 
-#include "ns3/ndnSIM/ndn-tools/core/common.hpp"
+#include "core/common.hpp"
 
 #include "ping-server.hpp"
 
