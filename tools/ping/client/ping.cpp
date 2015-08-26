@@ -113,7 +113,7 @@ Ping::finish()
 
   m_face.shutdown();
   afterFinish();
-  m_face.getIoService().stop();
+  // m_face.getIoService().stop();
 }
 
 Name

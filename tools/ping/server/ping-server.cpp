@@ -29,9 +29,9 @@ namespace server {
 PingServer::PingServer(Face& face, const Options& options)
   : m_options(options)
   , m_name(options.prefix)
+  , m_keyChain(ns3::ndn::StackHelper::getKeyChain())
   , m_nPings(0)
   , m_face(face)
-  , m_keyChain(ns3::ndn::StackHelper::getKeyChain())
 {
   shared_ptr<Buffer> b = make_shared<Buffer>();
   b->assign(m_options.payloadSize, 'a');
@@ -80,7 +80,7 @@ PingServer::onInterest(const Interest& interest)
   ++m_nPings;
   if (m_options.shouldLimitSatisfied && m_options.nMaxPings > 0 && m_options.nMaxPings == m_nPings) {
     m_face.shutdown();
-    m_face.getIoService().stop();
+    // m_face.getIoService().stop();
   }
 }
 
